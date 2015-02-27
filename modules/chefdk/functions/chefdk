@@ -1,0 +1,16 @@
+#
+# Transitions into a full chefdk environment
+#
+# Authors:
+#  Joe Rocklin <joe.rocklin@gmail.com>
+#
+
+chruby embedded
+eval "$(chef shell-init zsh 2&> /dev/null)"
+extra_paths=(
+  /opt/chefdk/bin
+)
+
+for i in $extra_paths; do
+  path=($i ${(@)path:#$i})
+done 

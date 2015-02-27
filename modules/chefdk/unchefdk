@@ -1,0 +1,23 @@
+#
+# Try to clean the chefdk paths from the environment
+#
+# Authors:
+#  Joe Rocklin <joe.rocklin@gmail.com>
+#
+
+unset GEM_PATH
+unset GEM_HOME
+unset GEM_ROOT
+chef_ruby_version=`ruby -v | cut -f2 -d ' ' | cut -f1 -d'p'`
+chruby system
+
+extra_paths=(
+  /opt/chefdk/bin
+  $HOME/.gem/ruby/$chef_ruby_version/bin
+  $HOME/.chefdk/gem/ruby/2.1.0/bin
+  /opt/chefdk/embedded/lib/ruby/gems/2.1.0/bin
+)
+
+for i in $extra_paths; do
+  path=(${(@)path:#$i})
+done 
