@@ -34,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'ruby' \
   'rails' \
+  'chefdk' \
   'git' \
   'tmux' \
   'syntax-highlighting' \
